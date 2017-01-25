@@ -21,15 +21,21 @@
         }
 
         context.fixture = function (fixtureId, model) {
+
+          if(!document.getElementById(fixtureId)) {
+            return null;
+          }
+
           (context.afterEach || context.teardown)(function () {
             document
               .getElementById(fixtureId)
               .restore();
           });
 
-          return document
-            .getElementById(fixtureId)
-            .create(model);
+            return document
+              .getElementById(fixtureId)
+              .create(model);
+          
         };
       });
     };

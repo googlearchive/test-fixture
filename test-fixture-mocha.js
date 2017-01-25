@@ -27,9 +27,14 @@
               .restore();
           });
 
-          return document
-            .getElementById(fixtureId)
-            .create(model);
+          if(!document
+            .getElementById(fixtureId)) {
+            throw "Fixture ID '" + fixtureId "' not found!"
+          } else {
+            return document
+              .getElementById(fixtureId)
+              .create(model);
+          }
         };
       });
     };

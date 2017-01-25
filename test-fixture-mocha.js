@@ -21,20 +21,21 @@
         }
 
         context.fixture = function (fixtureId, model) {
+
+          if(!document.getElementById(fixtureId)) {
+            return null;
+          }
+
           (context.afterEach || context.teardown)(function () {
             document
               .getElementById(fixtureId)
               .restore();
           });
 
-          if(!document
-            .getElementById(fixtureId)) {
-            throw "Fixture ID '" + fixtureId "' not found!"
-          } else {
             return document
               .getElementById(fixtureId)
               .create(model);
-          }
+          
         };
       });
     };

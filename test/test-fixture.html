@@ -195,6 +195,13 @@ describe('<test-fixture>', function () {
       expect(el).to.be.equal(document.getElementById('Foo'));
     });
   });
+
+  describe('when the fixture global is called, but element is not present', function () {
+    it('generates a DOM fragment from the associated fixture', function () {
+      var el = fixture('TrivialFixtureMissing');
+      expect(el).to.be.equal(null);
+    });
+  });
 });
   </script>
 
